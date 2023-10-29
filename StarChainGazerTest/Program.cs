@@ -10,51 +10,60 @@ class MainClass
         // code goes here  
         string[] args = arg.Split('-');
 
-        int nCoins = int.Parse(args[0]);
+        //int nCoins = int.Parse(args[0]);
 
-        List<int> coins = args[1].Split(' ').ToList().Select(x => int.Parse(x)).ToList();
+        List<int> coins = args[0].Split(' ').ToList().Select(x => int.Parse(x)).ToList();
 
-        int sum = int.Parse(args[2]);
+        int sum = int.Parse(args[1]);
 
-
-        //coins.Sort(); // important !
-
-        Console.WriteLine(" {0}/ {1}/ {2}", nCoins, string.Join("#", coins), sum);
-        Console.WriteLine(" WAYS {0}", countWays(nCoins, coins, sum));
+        Console.WriteLine(" {0}/ {1}/ {2}", coins.Count, string.Join("#", coins), sum);
+        Console.WriteLine(" WAYS {0}", countWays(coins, sum));
 
         return arg;
     }
 
-    static int countWays(int n, List<int> coins, int sum)
+    static int countWays(List<int> coins, int sum)
     {
-        allWays = 0;
-        recursCountWays(coins.ToArray(), 0, sum);
-        return allWays;
+        allUniqueWays.Clear();
+        recursCountWays(new List<int>(), coins, 0, sum);
+        return allUniqueWays.Count;
     }
 
-    static int allWays;
-    private static void recursCountWays(int[] ints, int currentSum, int finalSum)
+    static List<string> allUniqueWays = new List<string>();
+    private static void recursCountWays(List<int> way, List<int> listInts, int currentSum, int finalSum)
     {
         if (currentSum > finalSum)
         {
-            Console.WriteLine("-----TO MUCH !{0}", currentSum);
+            ////Console.WriteLine("■■■■■ TO MUCH !{0}", currentSum);
             return;
         }
 
         if (currentSum == finalSum)
         {
-            Console.WriteLine("FOUND A WAY");
-            allWays++;
+            string oneWay = string.Join(" / ", way);
+            Console.WriteLine("■■■■■ FOUND A WAY : {0}", oneWay);
+
+            if (!allUniqueWays.Contains(oneWay))
+                allUniqueWays.Add(oneWay);
+
             return;
         }
 
         if (currentSum < finalSum)
         {
-            for (int i = 0; i < ints.Length; i++)
+            for (int i = 0; i < listInts.Count; i++)
             {
-                Console.WriteLine("=====use {0}", ints[i]);
+                int v = listInts[i];
 
-                recursCountWays(ints, currentSum + ints[i], finalSum);
+                //List<int> newInts = new List<int>(ints);    
+                //newInts.RemoveAt(i);
+                way.Add(v);
+                way.Sort();
+
+                ////Console.WriteLine("=====use {0} (from  {1} to {2})", v, currentSum, finalSum);
+
+                recursCountWays(way, listInts, currentSum + v, finalSum);
+                way.Remove(v);
             }
         }
     }
@@ -63,5 +72,7 @@ class MainClass
     {
         // keep this function call here
         Console.WriteLine(Program(Console.ReadLine()));
+        //Console.WriteLine(Program("1 2 3-4")); // 4
+        //Console.WriteLine(Program("2 5-8")); // 1
     }
 }
