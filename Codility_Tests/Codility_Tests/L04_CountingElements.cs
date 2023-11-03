@@ -2,6 +2,7 @@
 using System;
 using System.Xml.Linq;
 using System.Collections.Generic;
+using System.Diagnostics.PerformanceData;
 
 namespace Codility_Tests
 {
@@ -78,6 +79,36 @@ namespace Codility_Tests
             }
 
             return (sum == realSum ? 1 : 0);
+        }
+
+        // Calculate the values of counters after applying all alternating operations: increase counter by 1; set value of all counters to current maximum.
+        public static int[] MaxCounters(int N, int[] A)
+        {
+            int[] counters = new int[N]; // filled with zeros
+            int size = A.Length;
+
+            int max = 0;
+            int maxToApply = 0;
+
+            for (int i = 0; i < size; i++)
+            {
+                int val = A[i];
+                if (val <= N)
+                {
+                    if (counters[val - 1] < maxToApply) counters[val - 1] = maxToApply;
+
+                    if (++counters[val - 1] > max) max = counters[val - 1];
+                }
+                else if (val == N + 1)
+                {
+                    maxToApply = max;
+                }
+            }
+
+            for (int j = 0; j < N; j++)
+                if (counters[j] < maxToApply) counters[j] = maxToApply;
+
+            return counters;
         }
 
 

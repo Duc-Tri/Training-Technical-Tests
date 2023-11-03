@@ -6,6 +6,18 @@ namespace UnitTests
     [TestClass]
     public class Codilify_UnitTests
     {
+        public static bool AreArraysEqual(int[] firstArray, int[] secondArray)
+        {
+            if (firstArray.Length != secondArray.Length)
+                return false;
+            for (int i = 0; i < firstArray.Length; i++)
+            {
+                if (firstArray[i] != secondArray[i])
+                    return false;
+            }
+            return true;
+        }
+
         [TestMethod]
         public void L0101()
         {
@@ -28,20 +40,8 @@ namespace UnitTests
         [TestMethod]
         public void L0202()
         {
-            Assert.AreEqual(true, ForLoop(L02_Arrays.CyclicRotation(new int[] { 3, 8, 9, 7, 6 }, 3),
+            Assert.AreEqual(true, AreArraysEqual(L02_Arrays.CyclicRotation(new int[] { 3, 8, 9, 7, 6 }, 3),
                                           new int[] { 9, 7, 6, 3, 8 }));
-        }
-
-        public bool ForLoop(int[] firstArray, int[] secondArray)
-        {
-            if (firstArray.Length != secondArray.Length)
-                return false;
-            for (int i = 0; i < firstArray.Length; i++)
-            {
-                if (firstArray[i] != secondArray[i])
-                    return false;
-            }
-            return true;
         }
 
         [TestMethod]
@@ -78,6 +78,14 @@ namespace UnitTests
             Assert.AreEqual(1, L04_CountingElements.PermCheck(new int[] { 1, 3, 2 }));
             Assert.AreEqual(0, L04_CountingElements.PermCheck(new int[] { 4, 1, 3 }));
         }
+
+        [TestMethod]
+        public void L0403()
+        {
+            Assert.AreEqual(true, AreArraysEqual(L04_CountingElements.MaxCounters(5, new int[] { 3, 4, 4, 6, 1, 4, 4 }),
+                              new int[] { 3, 2, 2, 4, 2 }));
+        }
+
 
     }
 
