@@ -1,4 +1,5 @@
 ﻿using Codility_Tests;
+using System;
 
 namespace UnitTests
 {
@@ -47,6 +48,15 @@ namespace UnitTests
         public void L3_FrogJmp()
         {
             Assert.AreEqual(3, L03_TimeComplexity.FrogJmp(10, 85, 30));
+        }
+
+
+        [TestMethod]
+        public void L3_PermMissingElem()
+        {
+            Assert.AreEqual(1, L03_TimeComplexity.PermMissingElem(new int[] { 2 }));
+            Assert.AreEqual(4, L03_TimeComplexity.PermMissingElem(new int[] { 2, 3, 1, 5 }));
+            Assert.AreEqual(14, L03_TimeComplexity.PermMissingElem(new int[] { 6, 7, 8, 9, 10, 11, 2, 3, 1, 5, 12, 13, 4, 15 }));
         }
 
     }
