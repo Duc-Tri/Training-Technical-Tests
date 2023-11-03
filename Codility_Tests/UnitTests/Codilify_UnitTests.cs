@@ -86,7 +86,13 @@ namespace UnitTests
                               new int[] { 3, 2, 2, 4, 2 }));
         }
 
-
+        [TestMethod]
+        public void L0404()
+        {
+            Assert.AreEqual(5, L04_CountingElements.MissingInteger(new int[] { 1, 3, 4, 6, 1, 2 }));
+            Assert.AreEqual(4, L04_CountingElements.MissingInteger(new int[] { 1, 2, 3 }));
+            Assert.AreEqual(1, L04_CountingElements.MissingInteger(new int[] { -1, -3 }));
+        }
     }
 
 }

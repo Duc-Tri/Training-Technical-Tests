@@ -3,6 +3,7 @@ using System;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Diagnostics.PerformanceData;
+using System.Threading.Tasks;
 
 namespace Codility_Tests
 {
@@ -111,6 +112,35 @@ namespace Codility_Tests
             return counters;
         }
 
+        // Find the smallest positive integer that does not occur in a given sequence.
+        public static int MissingInteger(int[] A)
+        {
+            HashSet<int> subset = new HashSet<int>();
+            int size = A.Length;
+            int min = 1;
+            int val;
+            for (int i = 0; i < size; i++)
+            {
+                val = A[i];
+                if (val <= 0) continue;
+
+                if (min == val)
+                {
+                    do
+                    {
+                        subset.Remove(min);
+                        min++;
+                    }
+                    while (subset.Contains(min));
+                }
+                else if (val > min && !subset.Contains(val))
+                {
+                    subset.Add(val);
+                }
+            }
+
+            return min;
+        }
 
     }
 }
