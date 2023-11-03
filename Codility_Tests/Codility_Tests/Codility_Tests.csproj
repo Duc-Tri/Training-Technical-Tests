@@ -46,6 +46,7 @@
     <Compile Include="L01_Iterations.cs" />
     <Compile Include="L02_Arrays.cs" />
     <Compile Include="L03_TimeComplexity.cs" />
+    <Compile Include="L04_CountingElements.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

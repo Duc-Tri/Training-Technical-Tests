@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Codility_Tests
 {
@@ -41,5 +35,32 @@ namespace Codility_Tests
             return (int)(realSum - sum);
         }
 
+        // Minimize the value |(A[0] + ... + A[P - 1]) - (A[P] + ... + A[N - 1])|.
+        public static int TapeEquilibrium(int[] A)
+        {
+            int size = A.Length;
+            long diff;
+            long minDiff = long.MaxValue;
+
+            long sumPart2;
+            long totalSum = 0;
+            for (int i = 0; i < size; i++) totalSum += (long)A[i];
+
+            long sumPart1 = 0;
+            for (int i = 0; i < size - 1; i++)
+            {
+                sumPart1 += (long)A[i];
+                sumPart2 = totalSum - sumPart1;
+
+                diff = (sumPart2 > sumPart1 ? sumPart2 - sumPart1 : sumPart1 - sumPart2);
+
+                if (diff < minDiff)
+                    minDiff = diff;
+            }
+
+            return (int)minDiff;
+        }
+
     }
+
 }
