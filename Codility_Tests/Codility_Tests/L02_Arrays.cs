@@ -8,6 +8,7 @@ namespace Codility_Tests
 {
     public static class L02_Arrays
     {
+        // Find value that occurs in odd number of elements
         public static int OddElement(int[] A)
         {
             if (A.Length == 1) return A[0];
@@ -27,6 +28,7 @@ namespace Codility_Tests
             return -1; // error !
         }
 
+        // Rotate an array to the right by a given number of steps
         public static int[] CyclicRotation(int[] A, int K)
         {
             if (A != null && A.Length > 1 && K > 0)

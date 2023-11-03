@@ -42,5 +42,13 @@ namespace UnitTests
             }
             return true;
         }
+
+        [TestMethod]
+        public void L3_FrogJmp()
+        {
+            Assert.AreEqual(3, L03_TimeComplexity.FrogJmp(10, 85, 30));
+        }
+
     }
+
 }

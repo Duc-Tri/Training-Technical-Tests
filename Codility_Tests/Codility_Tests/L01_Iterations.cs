@@ -8,6 +8,7 @@ namespace Codility_Tests
 {
     public static class L01_Iterations
     {
+        // Find longest sequence of zeros in binary representation of an integer
         public static int BinaryGap(int N)
         {
             char[] binaryNumber = Convert.ToString(N, 2).ToCharArray();
