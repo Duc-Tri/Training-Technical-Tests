@@ -17,7 +17,7 @@ class MainClass
         int sum = int.Parse(args[1]);
 
         Console.WriteLine(" {0}/ {1}/ {2}", coins.Count, string.Join("#", coins), sum);
-        Console.WriteLine(" WAYS {0}", countWays(coins, sum));
+        Console.WriteLine(" WAYS ■■■■■■■■■■■■■■■■■■■■ {0}", countWays(coins, sum));
 
         return arg;
     }
@@ -41,7 +41,7 @@ class MainClass
         if (currentSum == finalSum)
         {
             string oneWay = string.Join(" / ", way);
-            Console.WriteLine("■■■■■ FOUND A WAY : {0}", oneWay);
+            Console.WriteLine("====== FOUND A WAY : {0}", oneWay);
 
             if (!allUniqueWays.Contains(oneWay))
                 allUniqueWays.Add(oneWay);
@@ -71,8 +71,8 @@ class MainClass
     static void Main()
     {
         // keep this function call here
-        Console.WriteLine(Program(Console.ReadLine()));
-        //Console.WriteLine(Program("1 2 3-4")); // 4
+        //Console.WriteLine(Program(Console.ReadLine()));
+        Console.WriteLine(Program("1 2 3-4")); // 4
         //Console.WriteLine(Program("2 5-8")); // 1
     }
 }
