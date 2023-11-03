@@ -24,5 +24,23 @@ namespace UnitTests
             Assert.AreEqual(7, L02_Arrays.OddElement(new int[] { 9, 3, 9, 3, 9, 7, 9 }));
         }
 
+        [TestMethod]
+        public void L2_CyclicRotation()
+        {
+            Assert.AreEqual(true, ForLoop(L02_Arrays.CyclicRotation(new int[] { 3, 8, 9, 7, 6 }, 3),
+                                          new int[] { 9, 7, 6, 3, 8 }));
+        }
+
+        public bool ForLoop(int[] firstArray, int[] secondArray)
+        {
+            if (firstArray.Length != secondArray.Length)
+                return false;
+            for (int i = 0; i < firstArray.Length; i++)
+            {
+                if (firstArray[i] != secondArray[i])
+                    return false;
+            }
+            return true;
+        }
     }
 }

@@ -27,6 +27,25 @@ namespace Codility_Tests
             return -1; // error !
         }
 
-    }
+        public static int[] CyclicRotation(int[] A, int K)
+        {
+            if (A != null && A.Length > 1 && K > 0)
+            {
+                for (int t = 0; t < K; t++)
+                {
+                    int last = A[A.Length - 1];
+                    for (int i = A.Length - 2; i >= 0; i--)
+                    {
+                        int temp = A[i + 1];
+                        A[i + 1] = A[i];
+                    }
+                    A[0] = last;
+                }
+            }
 
+            return A;
+        }
+    }
 }
+
+
