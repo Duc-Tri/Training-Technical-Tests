@@ -50,7 +50,6 @@ namespace UnitTests
             Assert.AreEqual(3, L03_TimeComplexity.FrogJmp(10, 85, 30));
         }
 
-
         [TestMethod]
         public void L0302()
         {
@@ -70,8 +69,14 @@ namespace UnitTests
         public void L0401()
         {
             Assert.AreEqual(6, L04_CountingElements.FrogRiverOne(5, new int[] { 1, 3, 1, 4, 2, 3, 5, 4 }));
-
             Assert.AreEqual(-1, L04_CountingElements.FrogRiverOne(3, new int[] { 1, 2, 1, 2, 2, 1, 1, 2 }));
+        }
+
+        [TestMethod]
+        public void L0402()
+        {
+            Assert.AreEqual(1, L04_CountingElements.PermCheck(new int[] { 1, 3, 2 }));
+            Assert.AreEqual(0, L04_CountingElements.PermCheck(new int[] { 4, 1, 3 }));
         }
 
     }

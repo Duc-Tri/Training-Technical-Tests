@@ -1,4 +1,7 @@
-﻿using System.Xml.Linq;
+﻿using System.Reflection;
+using System;
+using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace Codility_Tests
 {
@@ -48,6 +51,35 @@ namespace Codility_Tests
 
             return completeTime;
         }
+
+        // Check whether array A is a permutation.
+        public static int PermCheck(int[] A)
+        {
+            int size = A.Length;
+            bool[] check = new bool[size];
+            ulong realSum = 0;
+            ulong sum = 0;
+            int value;
+            for (int i = size - 1; i >= 0; i--)
+            {
+                value = A[i];
+
+                // overflow
+                if (value > size) return 0;
+
+                // duplicate
+                if (check[value - 1])
+                    return 0;
+                else
+                    check[value - 1] = true;
+
+                sum += (ulong)A[i];
+                realSum += (ulong)i + 1;
+            }
+
+            return (sum == realSum ? 1 : 0);
+        }
+
 
     }
 }
