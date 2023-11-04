@@ -66,6 +66,25 @@ namespace Codility_Tests
             return passingCars;
         }
 
+        public static int CountDiv(int A, int B, int K)
+        {
+            // If K is 1, then all numbers in the range are divisible by K
+            if (K == 1)
+            {
+                return B - A + 1;
+            }
+
+            // Count the number of multiples of K in the range [A..B]
+            int divisible = B / K - A / K;
+
+            // If the first number in the range is divisible by K, add 1 to the count
+            if (A % K == 0)
+            {
+                divisible++;
+            }
+
+            return divisible;
+        }
     }
 
 

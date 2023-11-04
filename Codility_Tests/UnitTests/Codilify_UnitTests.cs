@@ -99,6 +99,13 @@ namespace UnitTests
         {
             Assert.AreEqual(5, L05_PrefixSums.PassingCars(new int[] { 0, 1, 0, 1, 1 }));
         }
+
+        [TestMethod]
+        public void L0502()
+        {
+            Assert.AreEqual(3, L05_PrefixSums.CountDiv(6,11,2));
+            Assert.AreEqual(1, L05_PrefixSums.CountDiv(0, 0, 11));
+        }
     }
 
 }
