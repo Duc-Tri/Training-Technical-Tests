@@ -93,6 +93,12 @@ namespace UnitTests
             Assert.AreEqual(4, L04_CountingElements.MissingInteger(new int[] { 1, 2, 3 }));
             Assert.AreEqual(1, L04_CountingElements.MissingInteger(new int[] { -1, -3 }));
         }
+
+        [TestMethod]
+        public void L0501()
+        {
+            Assert.AreEqual(5, L05_PrefixSums.PassingCars(new int[] { 0, 1, 0, 1, 1 }));
+        }
     }
 
 }
