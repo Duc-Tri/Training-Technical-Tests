@@ -103,8 +103,16 @@ namespace UnitTests
         [TestMethod]
         public void L0502()
         {
-            Assert.AreEqual(3, L05_PrefixSums.CountDiv(6,11,2));
+            Assert.AreEqual(3, L05_PrefixSums.CountDiv(6, 11, 2));
             Assert.AreEqual(1, L05_PrefixSums.CountDiv(0, 0, 11));
+        }
+
+
+        [TestMethod]
+        public void L0503()
+        {
+            Assert.AreEqual(true, AreArraysEqual(L05_PrefixSums.GenomicRangeQuery("CAGCCTA", new int[] { 2, 5, 0 }, new int[] { 4, 5, 6 }),
+                                                 new int[] { 2, 4, 1 }));
         }
     }
 

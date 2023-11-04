@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using static System.Net.Mime.MediaTypeNames;
+using System.Numerics;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Codility_Tests
 {
@@ -85,6 +84,55 @@ namespace Codility_Tests
 
             return divisible;
         }
+
+        // Find the minimal nucleotide from a range of sequence DNA.
+        public static int[] GenomicRangeQuery(string S, int[] P, int[] Q)
+        {
+            int N = S.Length;
+            int M = P.Length;
+
+            int[] impactFactorA = new int[N + 1];
+            int[] impactFactorC = new int[N + 1];
+            int[] impactFactorG = new int[N + 1];
+            int[] impactFactorT = new int[N + 1];
+
+            for (int i = 0; i < N; i++)
+            {
+                impactFactorA[i + 1] = impactFactorA[i] + (S[i] == 'A' ? 1 : 0);
+                impactFactorC[i + 1] = impactFactorC[i] + (S[i] == 'C' ? 1 : 0);
+                impactFactorG[i + 1] = impactFactorG[i] + (S[i] == 'G' ? 1 : 0);
+                impactFactorT[i + 1] = impactFactorT[i] + (S[i] == 'T' ? 1 : 0);
+            }
+
+            int[] result = new int[M];
+
+            for (int i = 0; i < M; i++)
+            {
+                int start = P[i];
+                int end = Q[i] + 1;
+
+                if (impactFactorA[end] - impactFactorA[start] > 0)
+                {
+                    result[i] = 1;
+                }
+                else if (impactFactorC[end] - impactFactorC[start] > 0)
+                {
+                    result[i] = 2;
+                }
+                else if (impactFactorG[end] - impactFactorG[start] > 0)
+                {
+                    result[i] = 3;
+                }
+                else
+                {
+                    result[i] = 4;
+                }
+            }
+            return result;
+        }
+
+
+
     }
 
 
