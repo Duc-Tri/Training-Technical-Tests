@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Codility_Tests;
+using System.Runtime.InteropServices;
 
 namespace UnitTests
 {
@@ -125,6 +126,14 @@ namespace UnitTests
         public void L0601()
         {
             Assert.AreEqual(3, L06_Sorting.Distinct(new int[] { 2, 1, 1, 2, 3, 1 }));
+        }
+
+        [TestMethod]
+        public void L0602()
+        {
+            Assert.AreEqual(60, L06_Sorting.MaxProductOfThree(new int[] { -1, 1, 2, -2, 5, 6 }));
+            Assert.AreEqual(-80, L06_Sorting.MaxProductOfThree(new int[] { -10, -2, -4 }));
+            Assert.AreEqual(125, L06_Sorting.MaxProductOfThree(new int[] { -5, 5, -5, 4 }));
         }
 
     }

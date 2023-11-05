@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Codility_Tests
 {
@@ -20,6 +22,21 @@ namespace Codility_Tests
             }
 
             return watched.Count;
+        }
+
+        // Maximize A[P] * A[Q]* A[R] for any triplet(P, Q, R).
+        public static int MaxProductOfThree(int[] A)
+        {
+            if (A.Length == 3) return A[0] * A[1] * A[2];
+
+            Array.Sort(A);
+
+            int size = A.Length;
+            int max1 = A[size - 1] * A[size - 2] * A[size - 3];
+            int max2 = A[0] * A[size - 1] * A[size - 2];
+            int max3 = A[0] * A[1] * A[size - 1];
+
+            return Math.Max(max3, Math.Max(max1, max2));
         }
 
     }
