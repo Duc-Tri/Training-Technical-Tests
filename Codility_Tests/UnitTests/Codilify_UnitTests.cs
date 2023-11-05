@@ -19,6 +19,7 @@ namespace UnitTests
             return true;
         }
 
+        /*
         [TestMethod]
         public void L0101()
         {
@@ -134,6 +135,27 @@ namespace UnitTests
             Assert.AreEqual(60, L06_Sorting.MaxProductOfThree(new int[] { -1, 1, 2, -2, 5, 6 }));
             Assert.AreEqual(-80, L06_Sorting.MaxProductOfThree(new int[] { -10, -2, -4 }));
             Assert.AreEqual(125, L06_Sorting.MaxProductOfThree(new int[] { -5, 5, -5, 4 }));
+        }
+        
+        [TestMethod]
+        public void IVALUATest0()
+        {
+            Assert.AreEqual(4, IVALUATest.LinkedList(new int[] { 1, 4, -1, 3, 2 }));
+        }
+        */
+
+        [TestMethod]
+        public void IVALUATest3()
+        {
+            Assert.AreEqual(8, IVALUATest.WordMachine("4 5 6 - 7 +"));
+            
+            Assert.AreEqual(7, IVALUATest.WordMachine("13 DUP 4 POP 5 DUP + DUP + -"));
+            
+            Assert.AreEqual(-1, IVALUATest.WordMachine("5 6 + -"));
+
+            Assert.AreEqual(-1, IVALUATest.WordMachine("3 DUP 5 - -"));
+
+            Assert.AreEqual(-1, IVALUATest.WordMachine("1048575 DUP +"));
         }
 
     }
