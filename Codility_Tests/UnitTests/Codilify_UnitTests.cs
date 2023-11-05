@@ -114,6 +114,18 @@ namespace UnitTests
             Assert.AreEqual(true, AreArraysEqual(L05_PrefixSums.GenomicRangeQuery("CAGCCTA", new int[] { 2, 5, 0 }, new int[] { 4, 5, 6 }),
                                                  new int[] { 2, 4, 1 }));
         }
-    }
 
+        [TestMethod]
+        public void L0504()
+        {
+            Assert.AreEqual(1, L05_PrefixSums.MinAvgTwoSlice(new int[] { 4, 2, 2, 5, 1, 5, 8 }));
+        }
+
+        [TestMethod]
+        public void L0601()
+        {
+            Assert.AreEqual(3, L06_Sorting.Distinct(new int[] { 2, 1, 1, 2, 3, 1 }));
+        }
+
+    }
 }

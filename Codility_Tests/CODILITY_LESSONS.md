@@ -22,7 +22,6 @@ Write an efficient algorithm for the following assumptions:
 ## L02 - ARRAYS
 
 ### OddOccurrencesInArray - Find value that occurs in odd number of elements
-
 A non-empty array A consisting of N integers is given. The array contains an odd number of elements, and each element of the array can be paired with another element that has the same value, except for one element that is left unpaired.
 
 For example, in array A such that:
@@ -48,7 +47,6 @@ Write an efficient algorithm for the following assumptions:
 * N is an odd integer within the range [1..1,000,000];
 * each element of array A is an integer within the range [1..1,000,000,000];
 * all but one of the values in A occur an even number of times.
-
 
 ### CyclicRotation - Rotate an array to the right by a given number of steps.
 An array A consisting of N integers is given. Rotation of the array means that each element is shifted right by one index, and the last element of the array is moved to the first place. For example, the rotation of array A = [3, 8, 9, 7, 6] is [6, 3, 8, 9, 7] (elements are shifted right by one index and 6 is moved to the first place).
@@ -86,7 +84,6 @@ In your solution, focus on correctness. The performance of your solution will no
 ## L03 - TIME COMPLEXITY
 
 ### FrogJmp - Count minimal number of jumps from position X to Y
-
 A small frog wants to get to the other side of the road. The frog is currently located at position X and wants to get to a position greater than or equal to Y. The small frog always jumps a fixed distance, D.
 
 Count the minimal number of jumps that the small frog must perform to reach its target.
@@ -111,7 +108,6 @@ Write an efficient algorithm for the following assumptions:
 * X ≤ Y.
 
 ###  PermMissingElem - Find the missing element in a given permutation
-
 An array A consisting of N different integers is given. The array contains integers in the range [1..(N + 1)], which means that exactly one element is missing.
 Your goal is to find that missing element.
 
@@ -160,7 +156,6 @@ Write an efficient algorithm for the following assumptions:
 ## L04 - COUNTING ELEMENTS
 
 ### FrogRiverOne - Find the earliest time when a frog can jump to the other side of a river
-
 A small frog wants to get to the other side of a river. The frog is initially located on one bank of the river (position 0) and wants to get to the opposite bank (position X+1). Leaves fall from a tree onto the surface of the river.
 
 You are given an array A consisting of N integers representing the falling leaves. A[K] represents the position where one leaf falls at time K, measured in seconds.
@@ -351,3 +346,54 @@ Write an efficient algorithm for the following assumptions:
 * each element of arrays P and Q is an integer within the range [0..N - 1];
 * P[K] ≤ Q[K], where 0 ≤ K < M;
 * string S consists only of upper-case English letters A, C, G, T.
+
+### MinAvgTwoSlice - Find the minimal average of any slice containing at least two elements
+A non-empty array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P < Q < N, is called a slice of array A (notice that the slice contains at least two elements). The average of a slice (P, Q) is the sum of A[P] + A[P + 1] + ... + A[Q] divided by the length of the slice. To be precise, the average equals (A[P] + A[P + 1] + ... + A[Q]) / (Q − P + 1).
+
+For example, array A such that:
+
+`    A[0] = 4    A[1] = 2    A[2] = 2    A[3] = 5    A[4] = 1    A[5] = 5    A[6] = 8`
+
+contains the following example slices:
+
+* slice (1, 2), whose average is (2 + 2) / 2 = 2;
+* slice (3, 4), whose average is (5 + 1) / 2 = 3;
+* slice (1, 4), whose average is (2 + 2 + 5 + 1) / 4 = 2.5.
+
+The goal is to find the starting position of a slice whose average is minimal.
+
+Write a function:
+
+`class Solution { public int solution(int[] A); }`
+
+that, given a non-empty array A consisting of N integers, returns the starting position of the slice with the minimal average. If there is more than one slice with a minimal average, you should return the smallest starting position of such a slice.
+
+For example, given array A such that:
+
+`    A[0] = 4    A[1] = 2    A[2] = 2    A[3] = 5    A[4] = 1    A[5] = 5    A[6] = 8`
+
+the function should return 1, as explained above.
+
+Write an efficient algorithm for the following assumptions:
+
+* N is an integer within the range [2..100,000];
+* each element of array A is an integer within the range [−10,000..10,000].
+
+## L06 - SORTING
+
+### Distinct - Compute number of distinct values in an array
+Write a function
+
+`class Solution { public int solution(int[] A); }`
+
+that, given an array A consisting of N integers, returns the number of distinct values in array A.
+
+For example, given array A consisting of six elements such that:
+
+` A[0] = 2    A[1] = 1    A[2] = 1    A[3] = 2    A[4] = 3    A[5] = 1`
+the function should return 3, because there are 3 distinct values appearing in array A, namely 1, 2 and 3.
+
+Write an efficient algorithm for the following assumptions:
+
+* N is an integer within the range [0..100,000];
+* each element of array A is an integer within the range [−1,000,000..1,000,000].

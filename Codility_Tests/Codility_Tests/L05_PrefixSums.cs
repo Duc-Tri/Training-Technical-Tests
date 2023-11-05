@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using static System.Net.Mime.MediaTypeNames;
 using System.Numerics;
 using System.Reflection;
+using System.ComponentModel;
+using System.Drawing;
+using System.Xml.Linq;
 
 namespace Codility_Tests
 {
@@ -132,10 +135,28 @@ namespace Codility_Tests
         }
 
 
+        // Find the minimal average of any slice containing at least two elements
+
+        public static int MinAvgTwoSlice(int[] A)
+        {
+            int size = A.Length;
+            int[] sum2slice = new int[size - 1];
+            int min = int.MaxValue;
+            int indexMin = -1;
+
+            for (int i = 0; i < size - 1; i++)
+            {
+                sum2slice[i] = A[i] + A[i + 1];
+                if (sum2slice[i] < min)
+                {
+                    min = sum2slice[i];
+                    indexMin = i;
+                }
+            }
+
+            return indexMin;
+        }
 
     }
-
-
-
 }
 
