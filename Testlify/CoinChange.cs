@@ -72,62 +72,64 @@ namespace StarChainGazerTest
             }
         }
 
-        private static int interativeDynamicProgramming(int[] coins, int sum)
+        private static int interativeDynamicProgramming(int[] coinValues, int totalSum)
         {
             /*
             The final outcome will be calculated by the values in the last column and row.
-
             In this case, you must loop through all of the indexes in the memo table(except the first row and column) and use previously - stored solutions to the subproblems.
 
-            If the coin value is greater than the dynamicprogSum, the coin is ignored, i.e.dynamicprogTable[i][j] = dynamicprogTable[i - 1][j].
+            If the coin value is greater than the dynamicprogSum, the coin is ignored, i.e.solutions[i][j] = solutions[i - 1][j].
 
-            If the coin value is less than the dynamicprogSum, you can consider it, i.e.dynamicprogTable[i][j] = dynamicprogTable[i - 1].[dynamicprogSum] + dynamicprogTable[i][j - coins[i - 1]].
+            If the coin value is less than the dynamicprogSum, you can consider it, i.e.solutions[i][j] = solutions[i - 1].[dynamicprogSum] + solutions[i][j - coins[i - 1]].
             */
 
-            int[,] dynamicprogTable = new int[sum + 1, coins.Length + 1];
+            for (int i = 0; i < coinValues.Length; i++)
+                Console.Write($"CI:{i}►CV:{coinValues[i]} / ");
+            Console.WriteLine($" TOTAL SUM={totalSum}");
 
-            for (int coinsRange = 0; coinsRange < dynamicprogTable.GetLength(1); coinsRange++)
+            int[,] solutions = new int[totalSum + 1, coinValues.Length + 1];
+
+            for (int coinIndex = 0; coinIndex < solutions.GetLength(1); coinIndex++)
             {
-                //Console.Write($"{coinsRange} ■ ");
+                //Console.Write($"{coinIndex} ■ ");
 
-                for (int dynamicprogSum = 0; dynamicprogSum < dynamicprogTable.GetLength(0); dynamicprogSum++)
+                for (int sum = 0; sum < solutions.GetLength(0); sum++)
                 {
-                    if (coinsRange == 0)
-                        dynamicprogTable[dynamicprogSum, coinsRange] = 0;
+                    if (coinIndex == 0)
+                        solutions[sum, coinIndex] = 0;
                     else
                     {
-                        if (dynamicprogSum == 0)
-                            dynamicprogTable[dynamicprogSum, coinsRange] = 1;
+                        if (sum == 0)
+                            solutions[sum, coinIndex] = 1;
                         else
                         {
-                            Console.WriteLine($"==================== dynamicprogSum={dynamicprogSum} coinsRange={coinsRange}");
-                            
-                            int coinValue = coins[coinsRange - 1];
+                            Console.WriteLine($"==================== sum={sum} coinIndex={coinIndex}");
 
-                            Console.WriteLine($"dynamicprogTable[{dynamicprogSum}, {coinsRange}] = ►►► ");
+                            int coinValue = coinValues[coinIndex - 1];
 
-                            if (coinValue > dynamicprogSum)
+                            Console.WriteLine($"solutions[S:{sum}, CI:{coinIndex}] = ►►► ");
+
+                            if (coinValue > sum)
                             {
-                                Console.WriteLine($"  {coinValue} > {dynamicprogSum} ----- coinValue > dynamicprogSum ");
+                                Console.WriteLine($"  CV:{coinValue} > S:{sum} ----- ");
 
-                                Console.WriteLine($"     dynamicprogTable[{dynamicprogSum}, {coinsRange - 1}] = {dynamicprogTable[dynamicprogSum, coinsRange - 1]}");
+                                Console.WriteLine($"     solutions[S:{sum}, CI-1:{coinIndex - 1}] = {solutions[sum, coinIndex - 1]}");
 
-                                dynamicprogTable[dynamicprogSum, coinsRange] = dynamicprogTable[dynamicprogSum, coinsRange - 1];
+                                solutions[sum, coinIndex] = solutions[sum, coinIndex - 1];
                             }
                             else
                             {
-                                Console.WriteLine($"  {coinValue} <= {dynamicprogSum} ■■■■■ coinValue <= dynamicprogSum ");
+                                Console.WriteLine($"  CV:{coinValue} <= S:{sum} ■■■■■");
 
-                                Console.WriteLine($"     dynamicprogTable[{dynamicprogSum}, {coinsRange - 1}] = {dynamicprogTable[dynamicprogSum, coinsRange - 1]} +");
+                                Console.WriteLine($"     solutions[S:{sum}, CI-1:{coinIndex - 1}] = {solutions[sum, coinIndex - 1]} +");
 
-                                Console.Write($"     dynamicprogTable[{dynamicprogSum - coinValue}, {coinsRange}] = {dynamicprogTable[dynamicprogSum - coinValue, coinsRange]}");
-                                Console.WriteLine($"   ( dynamicprogSum - coinValue = {dynamicprogSum - coinValue} )");
+                                Console.Write($"     solutions[S-CV:{sum - coinValue}, CI:{coinIndex}] = {solutions[sum - coinValue, coinIndex]}");
 
-                                dynamicprogTable[dynamicprogSum, coinsRange] = dynamicprogTable[dynamicprogSum, coinsRange - 1] +
-                                                                                dynamicprogTable[dynamicprogSum - coinValue, coinsRange];
+                                solutions[sum, coinIndex] = solutions[sum, coinIndex - 1] +
+                                                                                solutions[sum - coinValue, coinIndex];
                             }
 
-                            Console.WriteLine($" ►►► {dynamicprogTable[dynamicprogSum, coinsRange]} ");
+                            Console.WriteLine($" ►►► {solutions[sum, coinIndex]} ");
                         }
                     }
 
@@ -136,7 +138,7 @@ namespace StarChainGazerTest
                 //Console.WriteLine();
             }
 
-            int nSolutions = dynamicprogTable[dynamicprogTable.GetLength(0) - 1, dynamicprogTable.GetLength(1) - 1];
+            int nSolutions = solutions[solutions.GetLength(0) - 1, solutions.GetLength(1) - 1];
             Console.WriteLine($"interativeDynamicProgramming: solutions= {nSolutions}");
 
             return nSolutions;
