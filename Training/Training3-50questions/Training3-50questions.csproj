@@ -7,7 +7,7 @@
     <ProjectGuid>{255B30B0-1E6B-4944-ADEA-A7300D1DE63A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Training3_50questions</RootNamespace>
-    <AssemblyName>Training3_50questions</AssemblyName>
+    <AssemblyName>Training3-50questions</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
