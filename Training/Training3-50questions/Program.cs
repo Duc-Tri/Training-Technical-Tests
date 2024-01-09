@@ -15,9 +15,9 @@ namespace Training3_50questions
             Q08();
         }
 
-
         public class ClassQ08
         {
+
             // Membre de classe statique
             public static int Compteur { get; set; }
 
@@ -26,6 +26,7 @@ namespace Training3_50questions
             {
                 Compteur = 0;
                 Console.WriteLine("Le constructeur statique a été appelé.");
+                // n'est appelé que si l'on utilise une propriété, ou constructeur de la classe
             }
 
             public ClassQ08()
@@ -40,8 +41,8 @@ namespace Training3_50questions
             Console.WriteLine("Compteur avant l'instance : " + ClassQ08.Compteur);
 
             // Création d'instances de la classe
-            //ClassQ08 instance1 = new ClassQ08();
-            //ClassQ08 instance2 = new ClassQ08();
+            ClassQ08 instance1 = new ClassQ08();
+            ClassQ08 instance2 = new ClassQ08();
 
             // Accès au membre statique après les instances
             Console.WriteLine("Compteur après les instances : " + ClassQ08.Compteur);
