@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,29 @@ namespace Training4_C_features
         static void Main(string[] args)
         {
             AccessorsTest n0 = new AccessorsTest();
-            //n0.number = 3;
+
+            try
+            {
+                int a = 0;
+                int b = 1;
+                int c = b / a;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("EXCEPTION générale");
+                Console.WriteLine(ex.Message);
+            }
+            catch
+            {
+                Console.WriteLine("EXCEPTION non nommée");
+            }
+            finally
+            {
+                Console.WriteLine("finally");
+            }
+
+            Console.WriteLine("fin MAIN ====================================");
 
         }
 
@@ -44,13 +67,42 @@ namespace Training4_C_features
 
     public interface IExample
     {
-        public void MethodDeclaration();
+        // public int n; // NOT ALLOWED
+        public static int number;
 
-        // from C# 8
-        public void MethodImplementation()
+        public string Name { get; set; }
+
+        public void Method1();
+
+        public void Method2()
         {
-            Console.WriteLine("IExample::MethodImplementation");
+            Name = "IExample" + (number++);
         }
 
     }
+
+    public static class StaticClass
+    {
+
+    }
+
+    public static class StaticClass2
+    {
+
+    }
+
+    public abstract class AbstractClass
+    {
+        protected abstract void MethodAbstract();
+
+        private void Method1()
+        {
+
+        }
+    }
+
+
+
+
+
 }
