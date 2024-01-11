@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// https://tutorials.eu/50-interview-questions-for-your-csharp-interview/
-
-namespace Training2
+namespace Training2_SOLID
 {
     internal class Program
     {

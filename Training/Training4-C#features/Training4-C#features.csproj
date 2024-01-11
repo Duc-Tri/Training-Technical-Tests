@@ -2,10 +2,11 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <OutputType>Exe</OutputType>
+    <RootNamespace>Training4_C_features</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <AssemblyTitle>Training2</AssemblyTitle>
-    <Product>Training2</Product>
-    <Copyright>Copyright ©  2023</Copyright>
+    <AssemblyTitle>Training4-C#features</AssemblyTitle>
+    <Product>Training4-C#features</Product>
+    <Copyright>Copyright ©  2024</Copyright>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
