@@ -4,28 +4,8 @@ using System.Linq;
 
 namespace SGTest
 {
-
     internal class DistributeurAutomatique
     {
-        private List<Recette> recettes;
-
-        public List<Recette> Recettes { get { return recettes; } }
-
-        private void InitRecettes()
-        {
-            recettes = new List<Recette>();
-
-        }
-
-        public DistributeurAutomatique()
-        {
-            // On pourrait imaginer une initialisation externe,  pour des recettes spécifiques à chaque distributeur
-
-
-
-
-        }
-
         private static void AfficherBoissons()
         {
             Console.WriteLine("----------------------------------------");
@@ -41,19 +21,16 @@ namespace SGTest
 
         static void Main(string[] args)
         {
-
-            // Sélectionner une boisson
-
             while (true)
             {
                 AfficherBoissons();
 
-                Console.Write($"Choississez une boisson (entre 1 et {DataManager.ToutesRecettes.Count}): ");
+                Console.Write($"Choisissez une boisson (entre 1 et {DataManager.ToutesRecettes.Count}): ");
                 string read = Console.ReadLine();
                 int choix;
                 if (int.TryParse(read, out choix) && choix >= 1 && choix <= DataManager.ToutesRecettes.Count)
                 {
-                    Console.WriteLine(" CHOIX: " + DataManager.PrixFinalBoisson(DataManager.ToutesRecettes.ElementAt(choix - 1).Key));
+                    Console.WriteLine(" VOTRE CHOIX: " + DataManager.PrixFinalBoisson(DataManager.ToutesRecettes.ElementAt(choix - 1).Key));
 
                 }
                 else
@@ -61,7 +38,6 @@ namespace SGTest
                     Console.WriteLine("Choix invalide");
                 }
             }
-
 
         }
 

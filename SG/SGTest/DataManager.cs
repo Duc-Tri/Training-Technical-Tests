@@ -75,6 +75,18 @@ namespace SGTest
 
         public static string NomRecette(RecetteType rt) => RecetteNoms[rt];
 
+        internal static string DetailsRecette(RecetteType rt)
+        {
+            return RecetteNoms[rt].ToString() + string.Join(" # ", RecetteIngredients[rt]) + " Coût:" + PrixRecetteBrut(rt) + " euros";
+        }
+
+        public static Dictionary<RecetteType, Dictionary<IngredientType, int>> ToutesRecettes => RecetteIngredients;
+
+
+        // PRIX ===============================================================
+
+        private const decimal MARGE_POURCENT = 3m / 10m;
+
         public static decimal PrixRecetteBrut(RecetteType rt)
         {
             decimal prix = 0;
@@ -92,20 +104,10 @@ namespace SGTest
             return prix + prix * MARGE_POURCENT;
         }
 
-        internal static string DetailsRecette(RecetteType rt)
-        {
-            return RecetteNoms[rt].ToString() + string.Join(" # ", RecetteIngredients[rt]) + " Coût:" + PrixRecetteBrut(rt) + " euros";
-        }
-
         internal static string PrixFinalBoisson(RecetteType rt)
         {
             return RecetteNoms[rt].ToString() + " PRIX: " + PrixRecetteAvecMarge(rt) + " euros";
         }
-
-
-        public static Dictionary<RecetteType, Dictionary<IngredientType, int>> ToutesRecettes => RecetteIngredients;
-
-        private const decimal MARGE_POURCENT = 3m / 10m;
 
     }
 
