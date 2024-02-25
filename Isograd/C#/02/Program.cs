@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IsogradC_02
 {
-    internal class Program
+    internal class Question
     {
-        private void ShowFileContent(string filePath)
+        public void ShowFileContent(string filePath)
         {
             //-----------------------------------------------------------------
 
@@ -20,10 +16,13 @@ namespace IsogradC_02
 
             //-----------------------------------------------------------------
         }
+    }
+    internal class Program
+    {
 
         static void Main(string[] args)
         {
-            (new Program()).ShowFileContent("text.txt");
+            (new Question()).ShowFileContent("text.txt");
         }
     }
 }
