@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsogradC#06", "IsogradC#06.csproj", "{4C433D4F-38A1-4DF5-A121-A49AF9939A34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IsogradC#06", "IsogradC#06.csproj", "{4C433D4F-38A1-4DF5-A121-A49AF9939A34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

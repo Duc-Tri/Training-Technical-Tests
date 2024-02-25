@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using IsogradC_06;
+using System;
+using System.IO;
 
 namespace IsogradC_06
 {
@@ -11,18 +9,38 @@ namespace IsogradC_06
         //---------------------------------------------------------------------
         public void InitializeFileCreationTracker(string pathToTrack)
         {
+            using var watcher = new FileSystemWatcher(pathToTrack);
 
+            watcher.NotifyFilter = NotifyFilters.FileName;
+
+            watcher.Created += OnCreated;
+
+            //watcher.Filter = "*.txt";
+            //watcher.IncludeSubdirectories = true;
+            watcher.EnableRaisingEvents = true;
+
+            Console.WriteLine("Watcher on !");
+            Console.ReadLine();
+        }
+
+        private void OnCreated(object sender, FileSystemEventArgs e)
+        {
+            NewFilePath = $"Created: {e.FullPath}";
+            Console.WriteLine(NewFilePath);
         }
         //---------------------------------------------------------------------
 
         public string NewFilePath { get; set; }
     }
 
-    internal class Program
+}
+
+internal class Program
+{
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            (new Question()).InitializeFileCreationTracker("test");
-        }
+        Question q = new Question();
+        q.InitializeFileCreationTracker(@"a:\www");
     }
 }
+
