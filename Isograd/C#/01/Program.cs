@@ -2,7 +2,7 @@
 
 namespace IsogradC_01
 {
-    internal class IsogradC_01
+    internal class Question
     {
         //---------------------------------------------------------------------
 
@@ -23,12 +23,16 @@ namespace IsogradC_01
             refObj.Text = "NewValue";
         }
 
+    }
+
+    internal class Program
+    {
         static void Main(string[] args)
         {
-            TypeByValue v = new TypeByValue();
-            TypeByReference r = new TypeByReference();
+            var v = new Question.TypeByValue();
+            var r = new Question.TypeByReference();
 
-            (new IsogradC_01()).MyMethod(v, r);
+            (new Question()).MyMethod(v, r);
             Console.WriteLine("valObj.Text = " + v.Text);
             Console.WriteLine("refObj.Text = " + r.Text);
         }
