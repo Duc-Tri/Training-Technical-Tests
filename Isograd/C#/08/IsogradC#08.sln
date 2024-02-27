@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IsogradC#08", "IsogradC#08.csproj", "{B0D36D1A-C59D-44F8-A049-BD54E07F953D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0D36D1A-C59D-44F8-A049-BD54E07F953D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0D36D1A-C59D-44F8-A049-BD54E07F953D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0D36D1A-C59D-44F8-A049-BD54E07F953D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0D36D1A-C59D-44F8-A049-BD54E07F953D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52761BDF-9FBC-4DEE-AC4D-6AD9F5FBEE69}
+	EndGlobalSection
+EndGlobal
