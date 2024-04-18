@@ -1,12 +1,7 @@
-﻿using System.Data;
-using System.Drawing.Text;
-using NPOI.SS.Formula.Functions;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
+﻿Console.WriteLine("NPOI tests ================");
 
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+NPOITest.ReadExcel("ExcelOutput.xlsx");
 
-NPOITest.ReadExcel();
+NPOITest.WriteExcel("ExcelOutput.xlsx");
 
-NPOITest.WriteExcel();
+NPOITest.ReadExcel("emprise_poisson.xlsx","grt_installation");
