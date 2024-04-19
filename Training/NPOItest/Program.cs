@@ -16,8 +16,11 @@ NPOITest.ReadExcel("emprise_poisson.xlsx", "analog");
 Console.WriteLine("ipx2opc tests ==============================================");
 
 XSSFWorkbook xssfWorkbook = NPOITest.ReadExcel("emprise_poisson.xlsx");
-SheetWrapper sheetAnalog = new SheetWrapper(xssfWorkbook, "analog");
-IPX2OPCAnalog ipx2opcAnalog = new IPX2OPCAnalog(sheetAnalog.sheet);
 
+IPX2OPCAnalog ipx2opcAnalog = new IPX2OPCAnalog(new SheetWrapper(xssfWorkbook, "analog"));
 ipx2opcAnalog.ConvertIPX2OPC();
+
+IPX2OPCRemote ipx2opcRemote = new IPX2OPCRemote(new SheetWrapper(xssfWorkbook, "remote"));
+ipx2opcRemote.ConvertIPX2OPC();
+
 NPOITest.WriteExcel(xssfWorkbook, "output_OPC_emprise_poisson.xlsx");

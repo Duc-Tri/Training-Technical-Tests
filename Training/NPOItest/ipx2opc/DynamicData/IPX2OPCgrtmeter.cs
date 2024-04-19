@@ -1,4 +1,4 @@
-public class IPX2OPCgrtmeter
+public class IPX2OPCGrtmeter
 {
     
 }
