@@ -56,14 +56,15 @@ public static class NPOITest
         }
     }
 
-    public static void ReadExcel(string filename)
+    public static XSSFWorkbook ReadExcel(string filename)
     {
+        XSSFWorkbook xssWorkbook = null;
         DataTable dataTable = new DataTable();
         ISheet sheet;
         using (var stream = new FileStream(filename, FileMode.Open))
         {
             stream.Position = 0;
-            XSSFWorkbook xssWorkbook = new XSSFWorkbook(stream);
+            xssWorkbook = new XSSFWorkbook(stream);
             sheet = xssWorkbook.GetSheetAt(0);
             IRow headerRow = sheet.GetRow(0);
 
@@ -103,6 +104,7 @@ public static class NPOITest
                 rowList.Clear();
             }
         }
+        return xssWorkbook;
     }
 
     public static void WriteExcel(string filename)
