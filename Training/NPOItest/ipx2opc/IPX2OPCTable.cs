@@ -17,11 +17,12 @@ public abstract class IPX2OPCTable
     public static string ConvertRTUName(string modbusName)
     {
         string opcName = modbusName.Replace("_IPX_", "_OPC_");
-        int indexR = opcName.LastIndexOf("_R");
+        int index_R = opcName.LastIndexOf("_R");
         
         // tryParse ?
-        int num = int.Parse(opcName.Substring(indexR + 2, opcName.Length - indexR - 2));
-        opcName = opcName.Substring(0, indexR) + (num + 10);
+        int num = int.Parse(opcName.Substring(index_R + 2, opcName.Length - index_R - 2));
+        opcName = opcName.Substring(0, index_R) + (num + 10);
+        
         Console.WriteLine($"ConvertRTUName # old new modbusName=[{modbusName}] opcName=[{opcName}]");
 
         return opcName;

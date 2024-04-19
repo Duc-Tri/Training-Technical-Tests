@@ -107,7 +107,7 @@ public static class NPOITest
         return xssWorkbook;
     }
 
-    public static void WriteExcel(string filename)
+    public static void TestWriteSomeCellsToExcel(string filename)
     {
         List<User> users = new List<User>()
         {
@@ -146,6 +146,14 @@ public static class NPOITest
                 }
                 rowIndex++;
             }
+            workbook.Write(fs);
+        }
+    }
+
+    public static void WriteExcel(XSSFWorkbook workbook, string filename)
+    {
+        using (var fs = new FileStream(filename, FileMode.Create, FileAccess.Write))
+        {
             workbook.Write(fs);
         }
     }
