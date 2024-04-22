@@ -15,11 +15,18 @@ public class DBEditSchemaWrapper
 
         XmlDocument xmlDoc = new XmlDocument();
         xmlDoc.Load(XML_FILE);
+
+        if (xmlDoc == null)
+            return;
+
         XmlNode firstNode = xmlDoc.ChildNodes[0]; // DataSetTables
                                                   //string nodeName = firstNode.Name;
 
         XmlNode firstChildNode = firstNode.ChildNodes[0]; // DataSetTable
-        Console.WriteLine(" first node name = " + firstChildNode.Name + " att = " + firstChildNode.Attributes["Name"].Value);
+        if (firstChildNode == null)
+            return;
+
+        Console.WriteLine(" first node name = " + firstChildNode?.Name + " att = " + firstChildNode.Attributes["Name"].Value);
 
         //
         XmlSerializer serializer = new XmlSerializer(typeof(DataSetTables));
@@ -36,13 +43,14 @@ public class DBEditSchemaWrapper
                     if (dst.fields != null)
                     {
                         Console.WriteLine("\t==== FIELDS=" + dst.fields.Length);
-                        foreach(var f in dst.fields)
+                        foreach (var f in dst.fields)
                         {
                             Console.WriteLine($"\t\tfield name=[{f.Name}] rowlabel=[{f.RowLabel}]");
                         }
                     }
                 }
             }
+
         }
     }
 

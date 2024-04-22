@@ -7,15 +7,25 @@ using System.Xml;
 
 public static class NPOITest
 {
-    public static void ReadExcel(string filename, string sheetname)
+    public static void ReadExcel(string filename, string sheetname = null)
     {
         DataTable dataTable = new DataTable();
         ISheet sheet;
-        using (var stream = new FileStream(filename, FileMode.Open))
+
+        FileStream stream = null;
+        try
         {
+            stream = File.OpenRead(filename);
+            if (stream == null || stream.Length < 1)
+                return;
+
             stream.Position = 0;
+
             XSSFWorkbook xssWorkbook = new XSSFWorkbook(stream);
-            sheet = xssWorkbook.GetSheet(sheetname);
+
+            sheet = (sheetname == null) ? xssWorkbook.GetSheetAt(0)
+                                        : sheet = xssWorkbook.GetSheet(sheetname);
+
             IRow headerRow = sheet.GetRow(0);
 
             int cellCount = headerRow.LastCellNum;
@@ -57,6 +67,16 @@ public static class NPOITest
 
                 rowList.Clear();
             }
+
+        }
+        catch (Exception e)
+        {
+
+        }
+        finally
+        {
+            if (stream != null)
+                stream.Close();
         }
     }
 
@@ -65,8 +85,14 @@ public static class NPOITest
         XSSFWorkbook xssWorkbook = null;
         DataTable dataTable = new DataTable();
         ISheet sheet;
-        using (var stream = new FileStream(filename, FileMode.Open))
+
+        FileStream stream = null;
+        try
         {
+            stream = File.OpenRead(filename);
+            if (stream == null || stream.Length < 1)
+                return xssWorkbook;
+
             stream.Position = 0;
             xssWorkbook = new XSSFWorkbook(stream);
             sheet = xssWorkbook.GetSheetAt(0);
@@ -113,6 +139,16 @@ public static class NPOITest
                 rowList.Clear();
             }
         }
+        catch (Exception e)
+        {
+
+        }
+        finally
+        {
+            if (stream != null)
+                stream.Close();
+        }
+
         return xssWorkbook;
     }
 

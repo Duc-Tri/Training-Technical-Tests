@@ -12,15 +12,21 @@ NPOITest.ReadExcel("ExcelOutput.xlsx");
 NPOITest.TestWriteSomeCellsToExcel("ExcelOutput.xlsx");
 NPOITest.ReadExcel("emprise_poisson.xlsx", "analog");
 
-
 Console.WriteLine("ipx2opc tests ==============================================");
 
 XSSFWorkbook xssfWorkbook = NPOITest.ReadExcel("emprise_poisson.xlsx");
 
-IPX2OPCAnalog ipx2opcAnalog = new IPX2OPCAnalog(new SheetWrapper(xssfWorkbook, "analog"));
-ipx2opcAnalog.ConvertIPX2OPC();
+if (xssfWorkbook != null)
+{
+    IPX2OPCAnalog ipx2opcAnalog = new IPX2OPCAnalog(new SheetWrapper(xssfWorkbook, "analog"));
+    ipx2opcAnalog.ConvertIPX2OPC();
 
-IPX2OPCRemote ipx2opcRemote = new IPX2OPCRemote(new SheetWrapper(xssfWorkbook, "remote"));
-ipx2opcRemote.ConvertIPX2OPC();
+    IPX2OPCRemote ipx2opcRemote = new IPX2OPCRemote(new SheetWrapper(xssfWorkbook, "remote"));
+    ipx2opcRemote.ConvertIPX2OPC();
 
-NPOITest.WriteExcel(xssfWorkbook, "output_OPC_emprise_poisson.xlsx");
+    NPOITest.WriteExcel(xssfWorkbook, "output_OPC_emprise_poisson.xlsx");
+}
+else
+{
+    Console.Error.WriteLine("XLS file is null");
+}
