@@ -53,7 +53,14 @@ public abstract class IPX2OPCTable
     protected void SetValueToColumn(string columnName, int value)
     {
         List<ICell> cells = sheetWrapper.FindCellsByLabel(columnName);
-        Console.WriteLine("columnName : " + columnName + " #" + cells.Count);
+        Console.Write("I columnName : " + columnName + " #" + cells.Count+ " ");
+
+        if(cells==null||cells.Count==0)
+        {
+            Console.Error.WriteLine(" NO CELL FOUND FOR THIS LABEL !");
+            return;
+        }
+
         foreach (var c in cells)
         {
             c.SetCellValue(value);
@@ -64,7 +71,14 @@ public abstract class IPX2OPCTable
     protected void SetValueToColumn(string columnName, string value)
     {
         List<ICell> cells = sheetWrapper.FindCellsByLabel(columnName);
-        Console.WriteLine("columnName : " + columnName + " #" + cells.Count);
+        Console.Write("S columnName : " + columnName + " #" + cells.Count+ " ");
+        
+        if(cells==null||cells.Count==0)
+        {
+            Console.Error.WriteLine(" NO CELL FOUND FOR THIS LABEL !");
+            return;
+        }
+
         foreach (var c in cells)
         {
             c.SetCellValue(value);

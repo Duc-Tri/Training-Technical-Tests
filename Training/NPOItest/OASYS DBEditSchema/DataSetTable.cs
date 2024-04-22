@@ -11,5 +11,4 @@ public class DataSetTable
 
     [XmlElement("Field")]
     public Field[] fields;
-
 }

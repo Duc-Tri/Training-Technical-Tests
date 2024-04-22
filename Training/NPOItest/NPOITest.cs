@@ -19,6 +19,7 @@ public static class NPOITest
             IRow headerRow = sheet.GetRow(0);
 
             int cellCount = headerRow.LastCellNum;
+            Console.Write("HEADER CELLS ");
             for (int j = 0; j < cellCount; j++)
             {
                 ICell cell = headerRow.GetCell(j);
@@ -26,8 +27,9 @@ public static class NPOITest
                     continue;
 
                 dataTable.Columns.Add(cell.ToString());
-                Console.WriteLine($"HEADER CELL {j} = {cell}");
+                Console.Write($"{j}=[{cell}]");
             }
+            Console.WriteLine();
 
             List<string> rowList = new List<string>();
             for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
@@ -44,10 +46,12 @@ public static class NPOITest
                         if (!string.IsNullOrEmpty(cell_j) && !string.IsNullOrWhiteSpace(cell_j))
                         {
                             rowList.Add(cell_j);
-                            Console.WriteLine($"CELL {i}:{j} = {cell_j}");
+                            //Console.WriteLine($"CELL {i}:{j} = {cell_j}");
+                            Console.Write($"{i}:{j}=[{cell_j}] / ");
                         }
                     }
                 }
+                Console.WriteLine();
                 if (rowList.Count > 0)
                     dataTable.Rows.Add(rowList.ToArray());
 
@@ -69,6 +73,7 @@ public static class NPOITest
             IRow headerRow = sheet.GetRow(0);
 
             int cellCount = headerRow.LastCellNum;
+            Console.Write("HEADER CELLS ");
             for (int j = 0; j < cellCount; j++)
             {
                 ICell cell = headerRow.GetCell(j);
@@ -76,8 +81,9 @@ public static class NPOITest
                     continue;
 
                 dataTable.Columns.Add(cell.ToString());
-                Console.WriteLine($"HEADER CELL {j} = {cell}");
+                Console.Write($"{j}=[{cell}]");
             }
+            Console.WriteLine();
 
             List<string> rowList = new List<string>();
             for (int i = (sheet.FirstRowNum + 1); i <= sheet.LastRowNum; i++)
@@ -94,10 +100,13 @@ public static class NPOITest
                         if (!string.IsNullOrEmpty(cell_j) && !string.IsNullOrWhiteSpace(cell_j))
                         {
                             rowList.Add(cell_j);
-                            Console.WriteLine($"CELL {i}:{j} = {cell_j}");
+                            //Console.WriteLine($"CELL {i}:{j} = {cell_j}");
+                            Console.Write($"{i}:{j}=[{cell_j}] / ");
                         }
                     }
                 }
+                Console.WriteLine();
+
                 if (rowList.Count > 0)
                     dataTable.Rows.Add(rowList.ToArray());
 

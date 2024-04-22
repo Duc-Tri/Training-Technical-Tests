@@ -1,8 +1,11 @@
 using NPOI.SS.UserModel;
 
+// Handle the Analog table of OASYS (Dynamic Data)
+
+// TODO : replace hard-coded string constants with data read from DBEditSchema.xml
+
 public class IPX2OPCAnalog : IPX2OPCTable
 {
-
     public IPX2OPCAnalog(SheetWrapper sheet) : base(sheet)
     {
         TableName = "analog";
@@ -84,6 +87,5 @@ public class IPX2OPCAnalog : IPX2OPCTable
             }
         }
     }
-
 
 }
