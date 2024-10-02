@@ -35,32 +35,39 @@ namespace ConsoleAsync
             return false;
         }
 
-        static bool HasADividerInInterval2(int number, int dividerStart, int dividerEnd)
+        static bool HasADividerInIntervalTaks(int number, int dividerStart, int dividerEnd)
         {
-            int asyncNum = 10;
-            int asyncInterval = (dividerEnd - dividerStart) / asyncNum;
-            bool[] asyncRes = new bool[asyncNum];
+            int asyncNum = 20; // nombre de tasks
 
-            List<Task<bool>> tasks = new List<Task<bool>>();
+            int asyncInterval = (dividerEnd - dividerStart) / asyncNum; // intervalle entière
 
-            Console.WriteLine(" ## HasADividerInInterval2 " + number + " asyncNum=" + asyncNum + " asyncInterval=" + asyncInterval);
+            List<Task<bool>> tasks = new List<Task<bool>>(); // liste de tasks
 
+            Console.WriteLine(" ## HasADividerInIntervalTaks " + number + " asyncNum=" + asyncNum + " asyncInterval=" + asyncInterval);
+            
             int divider = dividerStart;
             for (int i = 0; i < asyncNum; i++)
             {
                 //Console.WriteLine(number + " ■■ " + divider + " / " + (divider + asyncInterval));
-                divider += asyncInterval + 1;
 
-                tasks.Add(HasADividerInIntervalAsync(number, divider, divider + asyncInterval));
+                int divStartTask = divider;
+                int divEndTask = divider + asyncInterval;
+
+                Task<bool> task = new Task<bool>(() => HasADividerInIntervalAsync(number, divStartTask, divEndTask));
+                tasks.Add(task);
+
+                divider += asyncInterval + 1;
             }
 
-            int taskPos = Task.WaitAny(tasks.ToArray());
+            foreach (var t in tasks)
+                t.Start();
 
+            int taskPos = Task.WaitAny(tasks.ToArray());
 
             return tasks[taskPos].Result;
         }
 
-        public static async Task<bool> HasADividerInIntervalAsync(int number, int dividerStart, int dividerEnd)
+        public static bool HasADividerInIntervalAsync(int number, int dividerStart, int dividerEnd)
         {
             // dividerStart < dividerEnd
 
@@ -69,43 +76,34 @@ namespace ConsoleAsync
             Console.WriteLine("HasADividerInIntervalAsync " + number + " ■■ " + dividerStart + " -> " + dividerEnd);
 
             if (number < dividerStart) return false;
-            bool res = false;
-            await Task.Factory.StartNew(() =>
+
+            for (int div = dividerStart; div <= dividerEnd; div++)
             {
-                for (int div = dividerStart; div <= dividerEnd; div++)
+                if (number <= div)
+                    return false;
+
+                if (number % div == 0)
                 {
-                    if (number <= div)
-                    {
-                        res = false;
-                        break;
-                    }
-
-                    if (number % div == 0)
-                    {
-                        res = true;
-                        Console.WriteLine("HasADividerInIntervalAsync ! " + number + " / " + div);
-                        break;
-                    }
-
-                    Thread.Sleep(1); // rallonge le temps de traitement artificiellement
+                    //Console.WriteLine("HasADividerInIntervalAsync ! " + number + " / " + div);
+                    return true;
                 }
-            });
 
-            //Console.WriteLine(res);
+                Thread.Sleep(1); // rallonge le temps de traitement artificiellement
+            }
 
-            return res;
+            return false;
         }
 
         private static void PrimeNumbers(int number)
         {
             //int prime = 1999; // 1999  =30967
-            // 999979
+
             int primeNum = number; // 911 = 14034
 
             Stopwatch stopwatch = new Stopwatch();
 
             stopwatch.Start();
-            bool res = HasADividerInInterval2(primeNum, 2, primeNum - 1);
+            bool res = HasADividerInIntervalTaks(primeNum, 2, primeNum - 1);
             Console.WriteLine("Prime ? " + primeNum + " ■■■ " + !res);
             stopwatch.Stop();
             Console.WriteLine("durée ■■■ " + stopwatch.ElapsedMilliseconds);
@@ -337,9 +335,12 @@ namespace ConsoleAsync
             // TaskWaitAny();
             // ParallelFor();
 
+            PrimeNumbers(911);
+
             // https://zestedesavoir.com/tutoriels/884/lasynchrone-et-le-multithread-en-net/
 
-            PrimeNumbers(911);
+            // https://fdorin.developpez.com/tutoriels/csharp/threadpool/part1/
+
         }
 
     }
