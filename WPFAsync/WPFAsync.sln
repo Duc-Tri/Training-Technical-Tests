@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFAsync", "WPFAsync.csproj", "{1E43A9B5-398C-4D61-834A-FFA3AB2ECE3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E43A9B5-398C-4D61-834A-FFA3AB2ECE3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E43A9B5-398C-4D61-834A-FFA3AB2ECE3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E43A9B5-398C-4D61-834A-FFA3AB2ECE3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E43A9B5-398C-4D61-834A-FFA3AB2ECE3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21490B0A-F7B4-417A-95F3-608B7B44996E}
+	EndGlobalSection
+EndGlobal
